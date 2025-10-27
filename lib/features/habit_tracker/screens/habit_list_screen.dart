@@ -1,18 +1,15 @@
+// lib\features\habit_tracker\screens\habit_list_screen.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HabitListScreen extends ConsumerStatefulWidget {
-  const HabitListScreen({Key? key}) : super(key: key);
+class HabitListScreen extends ConsumerWidget {
+  const HabitListScreen({super.key});
 
   @override
-  _HabitListScreenState createState() => _HabitListScreenState();
-}
-
-class _HabitListScreenState extends ConsumerState<HabitListScreen> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(title: const Text('Habit Tracker')),
-      body: const Center(child: Text('Habit List Screen')),
+      body: const Center(child: Text('List of Habits will be displayed here.')),
     );
   }
 }

@@ -1,6 +1,7 @@
 ## daily_helper - description
 
 Daily_helper is a simple application that contains 3 zones: habit_tracker, to-do list and replay zone.
+I decided to make that application in parts. First I will make a habit tracker, then To-do list e.t.c.
 
 # Habit tracker - zone 1
 

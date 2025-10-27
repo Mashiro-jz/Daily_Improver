@@ -68,11 +68,13 @@ class AppTheme {
     ),
     highlightColor: AppColors.warning,
     splashColor: AppColors.info,
-    colorScheme: ColorScheme.fromSwatch().copyWith(
+    colorScheme: ColorScheme.light(
+      primary: AppColors.primary,
       secondary: AppColors.accent,
       surface: AppColors.background,
       error: AppColors.error,
     ),
+
     tabBarTheme: TabBarThemeData(indicatorColor: AppColors.accent),
   );
 
@@ -125,7 +127,8 @@ class AppTheme {
       showUnselectedLabels: true,
       elevation: 8,
     ),
-    colorScheme: ColorScheme.fromSwatch().copyWith(
+    colorScheme: ColorScheme.dark(
+      primary: AppColors.primary,
       secondary: AppColors.accent,
       surface: const Color(0xFF1E1E1E),
     ),

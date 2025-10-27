@@ -27,11 +27,14 @@ migrate_working_dir/
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
+.flutter-plugins
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
+.packages
 /build/
-/coverage/
+.coverage/
+pubspec.lock
 
 # Symbolication related
 app.*.symbols
@@ -43,3 +46,35 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Android
+/android/.gradle/
+/android/local.properties
+/android/key.properties
+/android/app/google-services.json
+
+# iOS / macOS
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/.symlinks/
+ios/Pods/
+ios/Runner.xcworkspace/
+macos/Flutter/ephemeral/
+
+
+# Secrets / Environment
+.env
+*.keystore
+*.jks
+*.pem
+*.p12
+*.cer
+*.key
+*.crt
+GoogleService-Info.plist
+lib/config/secrets.dart
+lib/core/config/api_keys.dart
+
+# Images
+*.png
+!assets/**.png
