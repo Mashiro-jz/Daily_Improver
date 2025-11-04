@@ -4,7 +4,7 @@ import 'package:daily_helper/data/habit_tracker/datasources/habits_local_data_so
 import 'package:daily_helper/data/habit_tracker/models/habit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HabitsCubit extends Cubit {
+class HabitsCubit extends Cubit<List<Habit>> {
   final HabitsRepository habitsRepository;
 
   HabitsCubit({required this.habitsRepository}) : super([]);
@@ -19,12 +19,12 @@ class HabitsCubit extends Cubit {
     await loadHabits();
   }
 
-  Future<void> deleteHabit(String id) async {
+  Future<void> deleteHabit(int id) async {
     await habitsRepository.deleteHabit(id);
     await loadHabits();
   }
 
-  Future<void> toggleHabitCompletion(String id, DateTime date) async {
+  Future<void> toggleHabitCompletion(int id, DateTime date) async {
     await habitsRepository.toggleHabitCompletion(id, date);
     await loadHabits();
   }

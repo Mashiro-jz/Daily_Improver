@@ -1,5 +1,4 @@
 // lib\features\habit_tracker\screens\add_habit_dialog.dart
-import 'package:daily_helper/data/habit_tracker/models/habit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
