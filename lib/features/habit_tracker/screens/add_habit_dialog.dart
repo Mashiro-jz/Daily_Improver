@@ -1,5 +1,5 @@
 // lib\features\habit_tracker\screens\add_habit_dialog.dart
-import 'package:daily_helper/data/models/habit.dart';
+import 'package:daily_helper/data/habit_tracker/models/habit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -38,16 +38,18 @@ class _AddHabitDialogState extends ConsumerState<AddHabitDialog> {
           onPressed: () {
             final habitName = _habitNameController.text.trim();
             if (habitName.isNotEmpty) {
-              ref
-                  .read(habitProvider.notifier)
-                  .addHabit(
-                    Habit(
-                      name: habitName,
-                      createdAt: null,
-                      streak: null,
-                      repeats: null,
-                    ),
-                  ); // TODO: Update with proper fields
+              // ref
+              //     .read(habitProvider.notifier)
+              //     .addHabit(
+              //       Habit(
+              //         name: habitName,
+              //         createdAt: null,
+              //         streak: null,
+              //         repeats: null,
+              //         period: null,
+
+              //       ),
+              //     ); // TODO: Update with proper fields
               Navigator.of(context).pop(context);
             }
           },

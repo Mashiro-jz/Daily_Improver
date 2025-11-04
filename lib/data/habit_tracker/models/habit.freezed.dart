@@ -15,12 +15,13 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Habit {
 
- int? get id; String get name;// name of the habit
- DateTime get createdAt;// when the habit was created
- int get streak;// number of consecutive days the habit has been completed
- int get repeats;// how many times the habit should be done in a period
- bool get isCompleted;// whether the habit is completed for the day
- String get unit;
+@HiveField(0) int? get id;@HiveField(1) String get name;// name of the habit
+@HiveField(2) DateTime get createdAt;// when the habit was created
+@HiveField(3) int get streak;// number of consecutive days the habit has been completed
+@HiveField(4) int get repeats;// how many times the habit should be done in a period
+@HiveField(5) String get period;// e.g., "daily", "weekly", "monthly"
+@HiveField(6) bool get isCompleted;// whether the habit is completed for the day
+@HiveField(7) String get unit;
 /// Create a copy of Habit
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -33,16 +34,16 @@ $HabitCopyWith<Habit> get copyWith => _$HabitCopyWithImpl<Habit>(this as Habit, 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Habit&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.streak, streak) || other.streak == streak)&&(identical(other.repeats, repeats) || other.repeats == repeats)&&(identical(other.isCompleted, isCompleted) || other.isCompleted == isCompleted)&&(identical(other.unit, unit) || other.unit == unit));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Habit&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.streak, streak) || other.streak == streak)&&(identical(other.repeats, repeats) || other.repeats == repeats)&&(identical(other.period, period) || other.period == period)&&(identical(other.isCompleted, isCompleted) || other.isCompleted == isCompleted)&&(identical(other.unit, unit) || other.unit == unit));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,createdAt,streak,repeats,isCompleted,unit);
+int get hashCode => Object.hash(runtimeType,id,name,createdAt,streak,repeats,period,isCompleted,unit);
 
 @override
 String toString() {
-  return 'Habit(id: $id, name: $name, createdAt: $createdAt, streak: $streak, repeats: $repeats, isCompleted: $isCompleted, unit: $unit)';
+  return 'Habit(id: $id, name: $name, createdAt: $createdAt, streak: $streak, repeats: $repeats, period: $period, isCompleted: $isCompleted, unit: $unit)';
 }
 
 
@@ -53,7 +54,7 @@ abstract mixin class $HabitCopyWith<$Res>  {
   factory $HabitCopyWith(Habit value, $Res Function(Habit) _then) = _$HabitCopyWithImpl;
 @useResult
 $Res call({
- int? id, String name, DateTime createdAt, int streak, int repeats, bool isCompleted, String unit
+@HiveField(0) int? id,@HiveField(1) String name,@HiveField(2) DateTime createdAt,@HiveField(3) int streak,@HiveField(4) int repeats,@HiveField(5) String period,@HiveField(6) bool isCompleted,@HiveField(7) String unit
 });
 
 
@@ -70,14 +71,15 @@ class _$HabitCopyWithImpl<$Res>
 
 /// Create a copy of Habit
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = null,Object? createdAt = null,Object? streak = null,Object? repeats = null,Object? isCompleted = null,Object? unit = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? name = null,Object? createdAt = null,Object? streak = null,Object? repeats = null,Object? period = null,Object? isCompleted = null,Object? unit = null,}) {
   return _then(_self.copyWith(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as DateTime,streak: null == streak ? _self.streak : streak // ignore: cast_nullable_to_non_nullable
 as int,repeats: null == repeats ? _self.repeats : repeats // ignore: cast_nullable_to_non_nullable
-as int,isCompleted: null == isCompleted ? _self.isCompleted : isCompleted // ignore: cast_nullable_to_non_nullable
+as int,period: null == period ? _self.period : period // ignore: cast_nullable_to_non_nullable
+as String,isCompleted: null == isCompleted ? _self.isCompleted : isCompleted // ignore: cast_nullable_to_non_nullable
 as bool,unit: null == unit ? _self.unit : unit // ignore: cast_nullable_to_non_nullable
 as String,
   ));
@@ -164,10 +166,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? id,  String name,  DateTime createdAt,  int streak,  int repeats,  bool isCompleted,  String unit)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@HiveField(0)  int? id, @HiveField(1)  String name, @HiveField(2)  DateTime createdAt, @HiveField(3)  int streak, @HiveField(4)  int repeats, @HiveField(5)  String period, @HiveField(6)  bool isCompleted, @HiveField(7)  String unit)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Habit() when $default != null:
-return $default(_that.id,_that.name,_that.createdAt,_that.streak,_that.repeats,_that.isCompleted,_that.unit);case _:
+return $default(_that.id,_that.name,_that.createdAt,_that.streak,_that.repeats,_that.period,_that.isCompleted,_that.unit);case _:
   return orElse();
 
 }
@@ -185,10 +187,10 @@ return $default(_that.id,_that.name,_that.createdAt,_that.streak,_that.repeats,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? id,  String name,  DateTime createdAt,  int streak,  int repeats,  bool isCompleted,  String unit)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@HiveField(0)  int? id, @HiveField(1)  String name, @HiveField(2)  DateTime createdAt, @HiveField(3)  int streak, @HiveField(4)  int repeats, @HiveField(5)  String period, @HiveField(6)  bool isCompleted, @HiveField(7)  String unit)  $default,) {final _that = this;
 switch (_that) {
 case _Habit():
-return $default(_that.id,_that.name,_that.createdAt,_that.streak,_that.repeats,_that.isCompleted,_that.unit);case _:
+return $default(_that.id,_that.name,_that.createdAt,_that.streak,_that.repeats,_that.period,_that.isCompleted,_that.unit);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -205,10 +207,10 @@ return $default(_that.id,_that.name,_that.createdAt,_that.streak,_that.repeats,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? id,  String name,  DateTime createdAt,  int streak,  int repeats,  bool isCompleted,  String unit)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@HiveField(0)  int? id, @HiveField(1)  String name, @HiveField(2)  DateTime createdAt, @HiveField(3)  int streak, @HiveField(4)  int repeats, @HiveField(5)  String period, @HiveField(6)  bool isCompleted, @HiveField(7)  String unit)?  $default,) {final _that = this;
 switch (_that) {
 case _Habit() when $default != null:
-return $default(_that.id,_that.name,_that.createdAt,_that.streak,_that.repeats,_that.isCompleted,_that.unit);case _:
+return $default(_that.id,_that.name,_that.createdAt,_that.streak,_that.repeats,_that.period,_that.isCompleted,_that.unit);case _:
   return null;
 
 }
@@ -220,21 +222,23 @@ return $default(_that.id,_that.name,_that.createdAt,_that.streak,_that.repeats,_
 @JsonSerializable()
 
 class _Habit implements Habit {
-  const _Habit({this.id, required this.name, required this.createdAt, required this.streak, required this.repeats, this.isCompleted = false, this.unit = ''});
+  const _Habit({@HiveField(0) this.id, @HiveField(1) required this.name, @HiveField(2) required this.createdAt, @HiveField(3) required this.streak, @HiveField(4) required this.repeats, @HiveField(5) required this.period, @HiveField(6) this.isCompleted = false, @HiveField(7) this.unit = ''});
   factory _Habit.fromJson(Map<String, dynamic> json) => _$HabitFromJson(json);
 
-@override final  int? id;
-@override final  String name;
+@override@HiveField(0) final  int? id;
+@override@HiveField(1) final  String name;
 // name of the habit
-@override final  DateTime createdAt;
+@override@HiveField(2) final  DateTime createdAt;
 // when the habit was created
-@override final  int streak;
+@override@HiveField(3) final  int streak;
 // number of consecutive days the habit has been completed
-@override final  int repeats;
+@override@HiveField(4) final  int repeats;
 // how many times the habit should be done in a period
-@override@JsonKey() final  bool isCompleted;
+@override@HiveField(5) final  String period;
+// e.g., "daily", "weekly", "monthly"
+@override@JsonKey()@HiveField(6) final  bool isCompleted;
 // whether the habit is completed for the day
-@override@JsonKey() final  String unit;
+@override@JsonKey()@HiveField(7) final  String unit;
 
 /// Create a copy of Habit
 /// with the given fields replaced by the non-null parameter values.
@@ -249,16 +253,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Habit&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.streak, streak) || other.streak == streak)&&(identical(other.repeats, repeats) || other.repeats == repeats)&&(identical(other.isCompleted, isCompleted) || other.isCompleted == isCompleted)&&(identical(other.unit, unit) || other.unit == unit));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Habit&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&(identical(other.streak, streak) || other.streak == streak)&&(identical(other.repeats, repeats) || other.repeats == repeats)&&(identical(other.period, period) || other.period == period)&&(identical(other.isCompleted, isCompleted) || other.isCompleted == isCompleted)&&(identical(other.unit, unit) || other.unit == unit));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,createdAt,streak,repeats,isCompleted,unit);
+int get hashCode => Object.hash(runtimeType,id,name,createdAt,streak,repeats,period,isCompleted,unit);
 
 @override
 String toString() {
-  return 'Habit(id: $id, name: $name, createdAt: $createdAt, streak: $streak, repeats: $repeats, isCompleted: $isCompleted, unit: $unit)';
+  return 'Habit(id: $id, name: $name, createdAt: $createdAt, streak: $streak, repeats: $repeats, period: $period, isCompleted: $isCompleted, unit: $unit)';
 }
 
 
@@ -269,7 +273,7 @@ abstract mixin class _$HabitCopyWith<$Res> implements $HabitCopyWith<$Res> {
   factory _$HabitCopyWith(_Habit value, $Res Function(_Habit) _then) = __$HabitCopyWithImpl;
 @override @useResult
 $Res call({
- int? id, String name, DateTime createdAt, int streak, int repeats, bool isCompleted, String unit
+@HiveField(0) int? id,@HiveField(1) String name,@HiveField(2) DateTime createdAt,@HiveField(3) int streak,@HiveField(4) int repeats,@HiveField(5) String period,@HiveField(6) bool isCompleted,@HiveField(7) String unit
 });
 
 
@@ -286,14 +290,15 @@ class __$HabitCopyWithImpl<$Res>
 
 /// Create a copy of Habit
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? name = null,Object? createdAt = null,Object? streak = null,Object? repeats = null,Object? isCompleted = null,Object? unit = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? name = null,Object? createdAt = null,Object? streak = null,Object? repeats = null,Object? period = null,Object? isCompleted = null,Object? unit = null,}) {
   return _then(_Habit(
 id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int?,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as DateTime,streak: null == streak ? _self.streak : streak // ignore: cast_nullable_to_non_nullable
 as int,repeats: null == repeats ? _self.repeats : repeats // ignore: cast_nullable_to_non_nullable
-as int,isCompleted: null == isCompleted ? _self.isCompleted : isCompleted // ignore: cast_nullable_to_non_nullable
+as int,period: null == period ? _self.period : period // ignore: cast_nullable_to_non_nullable
+as String,isCompleted: null == isCompleted ? _self.isCompleted : isCompleted // ignore: cast_nullable_to_non_nullable
 as bool,unit: null == unit ? _self.unit : unit // ignore: cast_nullable_to_non_nullable
 as String,
   ));

@@ -1,5 +1,5 @@
 // lib\features\habit_tracker\screens\habit_list_screen.dart
-import 'package:daily_helper/data/models/habit.dart';
+import 'package:daily_helper/data/habit_tracker/models/habit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -37,7 +37,7 @@ class HabitListScreen extends ConsumerWidget {
           );
           if (newHabit != null && context.mounted) {
             // Add the new habit to the list
-            ref.invalidate(habitProvider); // TODO : Create habitProvider
+            // ref.invalidate(habitProvider); // TODO : Create habitProvider
           }
           // Navigate to add habit screen
         },
