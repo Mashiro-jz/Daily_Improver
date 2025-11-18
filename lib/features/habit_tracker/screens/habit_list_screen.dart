@@ -1,4 +1,5 @@
-// lib\features\habit_tracker\screens\habit_list_screen.dart
+// lib/features/habit_tracker/screens/habit_list_screen.dart
+
 import 'package:daily_helper/data/habit_tracker/models/habit.dart';
 import 'package:daily_helper/data/habit_tracker/state/habits_cubit.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +21,7 @@ class HabitListScreen extends ConsumerWidget {
             message: "Settings",
             child: IconButton(
               icon: const Icon(Icons.settings),
-              onPressed: () {
-                // Navigate to settings screen
-              },
+              onPressed: () {},
             ),
           ),
         ],
@@ -55,15 +54,10 @@ class HabitListScreen extends ConsumerWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         tooltip: "Add new habit",
         onPressed: () async {
-          final newHabit = await showDialog<Habit>(
+          await showDialog<Habit>(
             context: context,
             builder: (_) => const AddHabitDialog(),
           );
-          if (newHabit != null && context.mounted) {
-            // Add the new habit to the list
-            // ref.invalidate(habitProvider); // TODO : Create habitProvider
-          }
-          // Navigate to add habit screen
         },
         child: const Icon(Icons.add),
       ),

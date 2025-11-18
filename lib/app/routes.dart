@@ -1,5 +1,5 @@
 // lib/app/routes.dart
-import 'package:daily_helper/app/main_navigation.dart';
+import 'package:daily_helper/app/navigation/main_navigation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
